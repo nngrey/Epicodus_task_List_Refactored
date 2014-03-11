@@ -10,7 +10,7 @@ def main_menu
   puts "Chose 'd' to remove a completed task from a to-do list"
   main_choice = gets.chomp
     if main_choice == 'a'
-    new_list
+      new_list
     elsif main_choice == 'b'
       add_task_to_list
     elsif main_choice == 'c'
@@ -20,16 +20,17 @@ def main_menu
     end
 end
 
+#creates a new list
 def new_list
    puts "Enter the title of your list"
       current_title = gets.chomp
-      @list_of_lists.push(List.new(current_title))
+      List.create(current_title)
       puts "The" + " " + "#{current_title}" + " list was created"
       main_menu
 end
 
 def add_task_to_list
-  if @list_of_lists.length == 0
+  if List.all.length == 0
     puts "please create a list to enter your task"
     new_list
   else
@@ -37,7 +38,7 @@ def add_task_to_list
     puts list_the_lists
     end
     current_list_index = (gets.chomp.to_i) -1
-    current_list = @list_of_lists[current_list_index]
+    current_list = List.all[current_list_index]
     puts "enter your new task to #{current_list.show_title} list"
     current_task = gets.chomp
     current_list.add_task(current_task)
@@ -46,14 +47,14 @@ end
 
 def list_the_lists
   list_titles = []
-  @list_of_lists.each_with_index do |list, index|
+  List.all.each_with_index do |list, index|
     list_titles.push("#{index+1}" + ". " + list.show_title)
   end
   list_titles
 end
 
 def show_task
-  @list_of_lists.each do |list|
+  List.all.each do |list|
     puts list.show_title
     list.show_task_list.each_with_index do |task, index|
     all_tasks = []

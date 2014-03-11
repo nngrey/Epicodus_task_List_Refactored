@@ -3,6 +3,10 @@ require './lib/task'
 require 'list'
 
 describe List do
+  # before do
+  #   List.clear
+  # end
+
   it 'should create a list' do
     test_list = List.new("House")
     test_list.should be_instance_of List
@@ -26,3 +30,4 @@ describe List do
     test_list.show_title.should eq("House")
   end
 end
+
