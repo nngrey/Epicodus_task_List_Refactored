@@ -65,5 +65,23 @@ def show_task
   main_menu
 end
 
+def remove_task
+  puts "Select the list you want to modify"
+  puts list_the_lists
+  current_list_index = (gets.chomp.to_i) -1
+  current_list = List.all[current_list_index]
+  current_list.show_task_list.each_with_index do |task, index|
+    puts "#{index+1}" + ". " + task.description
+  end
+  puts "Select the number of the task you want to delete"
+  task_to_delete = gets.chomp.to_i
+  Task.all.delete_at(task_to_delete - 1)
+  #current_list.remove_a_task(task_to_delete)
+  current_list.show_task_list.each_with_index do |task, index|
+  puts "#{index+1}" + ". " + task.description
+  end
+  main_menu
+end
+
 main_menu
 
