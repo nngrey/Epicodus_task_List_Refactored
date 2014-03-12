@@ -75,7 +75,7 @@ def remove_task
   end
   puts "Select the number of the task you want to delete"
   task_to_delete = gets.chomp.to_i
-  Task.all.delete_at(task_to_delete - 1)
+  current_list.show_task_list.delete_at(task_to_delete - 1)
   #current_list.remove_a_task(task_to_delete)
   current_list.show_task_list.each_with_index do |task, index|
   puts "#{index+1}" + ". " + task.description

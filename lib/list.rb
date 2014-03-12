@@ -20,21 +20,21 @@ class List
   end
 
   def List.clear
-    @task_list = []
+    @@list_of_lists = []
   end
 
   def add_task(task)
     current_task = Task.create(task)
-    # @task_list.push(current_task)
+    @task_list.push(current_task)
     # @task_list
-    Task.all
+    #Task.all
   end
 
   def show_task_list
-    Task.all
+    @task_list
   end
 
-  def remove_task(num)
+  def remove_a_task(num)
     Task.all.delete_at(num-1)
     Task.all
   end
